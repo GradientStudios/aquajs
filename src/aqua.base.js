@@ -134,7 +134,7 @@ Emitter.prototype = {
       }
     }
   },
-  call: function(name) {
+  emit: function(name) {
     if (!this._events) {
       this._events = {};
     }
