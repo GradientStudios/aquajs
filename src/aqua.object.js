@@ -2,7 +2,7 @@
 
 var Game = function() {
   this.objects = [];
-  this.tasks = aqua.taskList();
+  this.tasks = aqua.taskList({priorities: Game.Priorities});
 
   this.task({callback: this.call.bind(this, 'update')});
   this.task({callback: this.call.bind(this, 'lateUpdate'), priority: 'LATE_UPDATE'});

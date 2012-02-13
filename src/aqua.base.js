@@ -56,12 +56,22 @@ Task.prototype = {
   }
 };
 
-var TaskList = function() {
+var TaskList = function(options) {
   this.items = [];
+  this.priorities = extend({}, options.priorities);
 };
 TaskList.prototype = {
   add: function(item) {
     var i = 0, added = false;
+
+    if (typeof item.priority == 'string') {
+      item.priority = this.priorities[item.priority];
+      if (!item.priority) {
+        throw {
+          message: 'no such priority defined in task list.'
+        };
+      }
+    }
 
     for ( ; i < this.items.length; i++ ) {
       if (item.before && this.items[i].priority >= item.priority || 
@@ -144,8 +154,8 @@ Emitter.prototype = {
 aqua.task = function(options) {
   return new Task(options);
 };
-aqua.taskList = function() {
-  return new TaskList();
+aqua.taskList = function(options) {
+  return new TaskList(options);
 };
 aqua.emitter = function() {
   return new Emitter();
