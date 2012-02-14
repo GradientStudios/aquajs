@@ -117,7 +117,7 @@ GameObject.prototype = {
   },
   destroy: function(component) {
     if (component) {
-      function remove() {
+      var removeComponent = function() {
         var index = this.components.indexOf(component);
 
         if (index != -1) {
@@ -130,12 +130,12 @@ GameObject.prototype = {
 
           this.components.splice(index, 1);
         }
-      }
+      };
 
       if (this.game) {
-        this.game.task({callback: remove.bind(this), priority: 'GARBAGE', once: true});
+        this.game.task({callback: removeComponent.bind(this), priority: 'GARBAGE', once: true});
       } else {
-        remove.call(this);
+        removeComponent.call(this);
       }
     } else if (this.game) {
       this.game._destroyobject(this);
@@ -184,6 +184,9 @@ aqua.game = function() {
 };
 aqua.gameObject = function() {
   return new GameObject();
+};
+aqua.component = function() {
+  return new Component();
 };
 
 aqua.extend(aqua.types, {
