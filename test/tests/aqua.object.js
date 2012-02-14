@@ -1,7 +1,15 @@
 module('object');
 
+test('functions exists', 3, function() {
+  equal(typeof aqua.game, 'function', 'game');
+  equal(typeof aqua.gameObject, 'function', 'gameObject');
+  equal(typeof aqua.component, 'function', 'component');
+});
+
 test('component add/destroy events', 10, function() {
-  function TestComponent() {}
+  var game, gameObject, testComponent;
+
+  function TestComponent() {};
   TestComponent.prototype = aqua.extend(
     aqua.component(),
     {
@@ -17,22 +25,21 @@ test('component add/destroy events', 10, function() {
       ongamedestroy: function() {
         ok(true, 'ongamedestroy');
       }
-    }
-  );
-
-  var game = aqua.game(),
-      gameObject = aqua.gameObject(),
-      testComponent = new TestComponent();
-
+    });
+  
+  game = aqua.game();
+  gameObject = aqua.gameObject();
+  testComponent = new TestComponent();
+  
   gameObject.add(testComponent);
   testComponent.destroy();
-
+  
   game.add(gameObject);
   gameObject.add(testComponent);
   gameObject.destroy();
   game.step();
   testComponent.destroy();
-
+  
   gameObject.add(testComponent);
   game.add(gameObject);
   testComponent.destroy();
@@ -40,7 +47,7 @@ test('component add/destroy events', 10, function() {
 });
 
 test('component method calls', 2, function() {
-  function TestComponent() {}
+  function TestComponent() {};
   TestComponent.prototype = aqua.extend(
     aqua.component(),
     {
