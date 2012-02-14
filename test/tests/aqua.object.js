@@ -26,20 +26,20 @@ test('component add/destroy events', 10, function() {
         ok(true, 'ongamedestroy');
       }
     });
-  
+
   game = aqua.game();
   gameObject = aqua.gameObject();
   testComponent = new TestComponent();
-  
+
   gameObject.add(testComponent);
   testComponent.destroy();
-  
+
   game.add(gameObject);
   gameObject.add(testComponent);
   gameObject.destroy();
   game.step();
   testComponent.destroy();
-  
+
   gameObject.add(testComponent);
   game.add(gameObject);
   testComponent.destroy();
