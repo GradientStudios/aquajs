@@ -1,6 +1,6 @@
 config.init({
   concat: {
-    'dist/aqua.js': ['src/aqua.base.js', 'src/aqua.object.js']
+    'dist/aqua.js': ['src/base.js', 'src/object.js']
   },
   min: {
     'dist/aqua.min.js': ['dist/aqua.js']
