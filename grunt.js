@@ -5,7 +5,7 @@ config.init({
     'git.submodule': true
   },
   concat: {
-    'dist/aqua.js': ['src/base.js', 'src/object.js']
+    'dist/aqua.js': '<config:lint.files>'
   },
   min: {
     'dist/aqua.min.js': ['dist/aqua.js']
@@ -14,7 +14,7 @@ config.init({
     index: ['test/index.html']
   },
   lint: {
-    files: ['src/aqua.base.js', 'src/aqua.object.js']
+    files: ['src/base.js', 'src/object.js']
   }
 });
 
