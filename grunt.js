@@ -14,7 +14,7 @@ config.init({
     index: ['test/index.html']
   },
   lint: {
-    files: ['src/base.js', 'src/object.js']
+    files: ['lib/base.js', 'lib/object.js']
   }
 });
 
