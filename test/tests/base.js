@@ -81,3 +81,16 @@ test('emitter emits', 1, function() {
   emitter.off('call', handler);
   emitter.emit('call');
 });
+
+test('base gets super proto', 1, function() {
+  var base = function(){
+    this.x = 1;
+  };
+
+  var type = function() {
+    aqua.base(this).constructor.call(this);
+  };
+  type.prototype = new base();
+
+  deepEqual(new type(), new base(), 'equals super type');
+});

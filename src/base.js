@@ -170,6 +170,9 @@ aqua.query = function(name, _default) {
   }
   return _default;
 };
+aqua.base = function(context) {
+  return Object.getPrototypeOf(Object.getPrototypeOf(context));
+};
 aqua.requestAnimFrame = (function(){
   // thanks paul irish
   return window.requestAnimationFrame ||
