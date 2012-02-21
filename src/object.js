@@ -60,15 +60,22 @@ Game.prototype = {
   },
 
   main: function() {
+    var self = this;
+
     // put common timing and rAF loop logic in here
+    aqua.requestAnimFrame(function loop() {
+      aqua.requestAnimFrame(loop);
+
+      self.step();
+    });
   },
 
   pause: function() {
-    
+    // un-implemented
   },
 
   resume: function() {
-    
+    // un-implemented
   }
 };
 
