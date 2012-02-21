@@ -18,7 +18,7 @@ Examples
 A Game
 ------
 
-.. sourcecode :: javascript
+.. parsed-literal ::
 
   var myGame = aqua.game(),
       myGameObject = aqua.gameObject();
@@ -51,7 +51,7 @@ GameService
 
 This is an example service that replicates the tasks Game objects has by default.
 
-.. sourcecode :: javascript
+.. parsed-literal ::
 
   var UpdateService = function() {
     aqua.base(this).constructor.call(this);
